@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Pet Adoption Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This project is a Pet Adoption Application built with React and React Router. It allows users to browse pets available for adoption, search for specific types of pets, and view detailed information about each pet. The application uses React Router for client-side routing to navigate between different pages.
 
-## Available Scripts
+## Features
+- **Home Page**: Displays a list of pets available for adoption.
+- **Search Page**: Allows users to search for pets based on specific criteria.
+- **Pet Details Page**: Shows detailed information about a selected pet.
+- **Not Found Page**: Displays a message when a pet's details are not found.
 
-In the project directory, you can run:
+## Project Structure
+- `pages/home.js`: Home page component.
+- `pages/search.js`: Search page component.
+- `pages/detail.js`: Pet details page component.
+- `pages/petNotFound.js`: Pet details not found page component.
+- `components/root.js`: Root component that serves as the layout for nested routes.
 
-### `yarn start`
+## Routing
+The application uses `react-router-dom` for routing. The routes are defined using JSX Route elements and managed by a `RouterProvider`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Routes
+- `/`: Root route that renders the `Root` component.
+- `/home`: Renders the `HomePage` component.
+- `/:type`: Renders the `HomePage` component filtered by pet type.
+- `/:type/:id`: Renders the `PetDetailsPage` component for a specific pet.
+- `/search`: Renders the `SearchPage` component.
+- `/pet-details-not-found`: Renders the `PetDetailsNotFound` component.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Example Code
+```javascript
+import HomePage from './pages/home';
+import SearchPage from './pages/search';
+import PetDetailsPage from './pages/detail';
+import PetDetailsNotFound from './pages/petNotFound';
+import Root from './components/root';
 
-### `yarn test`
+// Add react-router-dom imports
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+// create router with JSX Route elements
+const appRouter = createBrowserRouter(createRoutesFromElements(
+  <Route path="/" element={ <Root/> }>
+    <Route index element ={<HomePage/> }/>
+    <Route path="home" element={<HomePage/> }/>
+    <Route path=":type" element ={<HomePage/> }/>
+    <Route path=":type/:id" element ={<PetDetailsPage/> }/>
+    <Route path="search" element={<SearchPage/>}/>
+    <Route path="pet-details-not-found" element={<PetDetailsNotFound/>}/> 
+  </Route>
+));
 
-### `yarn build`
+function App() {
+  return (
+    // replace below with a Router Provider
+    <RouterProvider router = {appRouter}/>
+  );
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+export default App;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Requirements
+Node.js
+npm or yarn
+React
+react-router-dom
+How to Run
+Clone the repository: git clone https://github.com/your-username/pet-adoption-app.git
+Navigate to the project directory: cd pet-adoption-app
+Install dependencies: npm install or  yarn install
+Start the development server: npm start or yarn start
+License
+This project is licensed under the MIT License.
+```
