@@ -65,8 +65,8 @@ npm or yarn
 React
 react-router-dom
 How to Run
-Clone the repository: git clone https://github.com/your-username/pet-adoption-app.git
-Navigate to the project directory: cd pet-adoption-app
+Clone the repository: git clone https://github.com/your-username/Adopt_Pet.git
+Navigate to the project directory: cd AdopPetApp
 Install dependencies: npm install or  yarn install
 Start the development server: npm start or yarn start
 License
